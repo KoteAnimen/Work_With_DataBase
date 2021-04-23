@@ -7,11 +7,11 @@
     <x>0</x>
     <y>0</y>
     <width>553</width>
-    <height>379</height>
+    <height>369</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Работа с базой данных</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QGroupBox" name="groupBox">

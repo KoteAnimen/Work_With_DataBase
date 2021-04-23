@@ -12,15 +12,16 @@ MainWindow::MainWindow(QWidget *parent)
     db.setPassword("");
     if(!db.open())
     {
-       QMessageBox box;
-       box.setText(QSqlError(db.lastError()).text());
-       box.exec();
+        QMessageBox box;
+        box.setText(QSqlError(db.lastError()).text());
+        box.exec();
     }
     add = new addRecord();
     model = new QSqlTableModel(this);
     model->setTable("dbo.ListDataMatrix");
     model->setHeaderData(0, Qt::Horizontal, QObject::tr("Id Data Matrix"));
-    model->setHeaderData(1, Qt::Horizontal, QObject::tr("Read Time"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("Type Product"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("Read Time"));
     ui->tableView->setModel(model);
     model->select();
     timer = new QTimer();
@@ -32,9 +33,6 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-
-
-
 
 void MainWindow::on_AddRecord_clicked()
 {    
@@ -54,9 +52,9 @@ void MainWindow::on_ShowCountRecords_clicked()
     query.exec();
     if (query.next())
     {
-            QMessageBox box;
-            box.setWindowTitle("Количество записей в таблице");
-            box.setText(QString::number(query.value(0).toInt()));
-            box.exec();
+        QMessageBox box;
+        box.setWindowTitle("Количество записей в таблице");
+        box.setText(QString::number(query.value(0).toInt()));
+        box.exec();
     }
 }
